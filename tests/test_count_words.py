@@ -1,9 +1,12 @@
 import pytest
 from lib.count_words import *
 
-def correct_word_count():
+def test_correct_word_count():
     assert word_count('seven') == 5
     assert word_count('Function') == 8
 
-def exception_no_str():
-    assert word_count(578) == "Please enter string!"
+def test_exception_no_str():
+    with pytest.raises(Exception) as error:
+        word_count(578)
+    
+    assert str(error.value) == "Please enter string!"
