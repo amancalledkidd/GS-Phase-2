@@ -8,7 +8,7 @@ class DiaryEntry:
         return f"{self.title}: {self.contents}"
 
     def count_words(self):
-        string = (self.format()).split(" ")
+        string = (self.contents).split(" ")
         return len(string)
 
     def reading_time(self, wpm):
@@ -20,13 +20,13 @@ class DiaryEntry:
     def reading_chunk(self, wpm, minutes):
         
         words_to_read = wpm * minutes
-        string = (self.format()).split(" ")
+        string = (self.contents).split(" ")
         if self.chunks != []:
-            ans = (" ").join(self.chunks[:words_to_read])
+            slice = (" ").join(self.chunks[:words_to_read])
             self.chunks = self.chunks[words_to_read:]
         else:
-            ans = (" ").join(string[:words_to_read])
+            slice = (" ").join(string[:words_to_read])
             self.chunks = string[words_to_read:]
         
-        return ans
+        return slice
         
